@@ -2,6 +2,14 @@
   "expo": {
     "name": "Perch",
     "slug": "Perch",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/Hostania.ttf"]
+        }
+      ]
+    ]
   }
 }
