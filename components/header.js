@@ -33,7 +33,7 @@ function AppHeader() {
     rightComponent={{ text: 'Perch', style: { color: '#000', fontFamily: "Hostania", fontSize: 20 } }}
     barStyle={{borderColor: "#000", borderWidth: 10}}
   />
-          <Divider inset={true} insetType="right" />
+          <Divider width="2" color="#000"/>
 
     </View>
     

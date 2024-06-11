@@ -1,13 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Feather from 'react-native-vector-icons/Feather';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import { Divider } from '@rneui/themed';
 import { NavigationContainer } from '@react-navigation/native';
 import Home from './screens/home.js'
 import 'react-native-gesture-handler';
 
+const Tab = createMaterialBottomTabNavigator();
 
-const Stack = createStackNavigator();
 
 function HomeScreen({ navigation }) {
   return (
@@ -21,9 +26,32 @@ function HomeScreen({ navigation }) {
 export default function App() {
   return (
     <NavigationContainer>
-    <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
-    <Stack.Screen name="Home" component={HomeScreen} />
-  </Stack.Navigator>
+    <Tab.Navigator initialRouteName="Home" screenOptions={{headerShown: false}} shifting={true} tabBarInactiveTintColor="#000" barStyle={{ backgroundColor: '#fff', borderTopColor: '#000', borderTopWidth: 2 }}>
+    <Tab.Screen name="Home" component={HomeScreen} options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ color }) => (
+            <Feather name="home" color={color} size={26} />
+          ),
+        }}/>
+    <Tab.Screen name="Meditate" component={HomeScreen} options={{
+          tabBarLabel: 'Meditate',
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="flower-outline" color={color} size={26} />
+          ),
+        }}/>
+    <Tab.Screen name="Chat" component={HomeScreen} options={{
+          tabBarLabel: 'Chat',
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="chatbubble-outline" color={color} size={26} />
+          ),
+        }}/>
+    <Tab.Screen name="Logs" component={HomeScreen} options={{
+          tabBarLabel: 'Mood Logs',
+          tabBarIcon: ({ color }) => (
+            <AntDesign name="profile" color={color} size={26} />
+          ),
+        }}/>
+  </Tab.Navigator>
   </NavigationContainer>
   );
 }
